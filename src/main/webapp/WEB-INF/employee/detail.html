@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 600px;
+      margin: auto;
+    }
+
+    h1 {
+      margin: 20px;
+      text-align: center;
+    }
+
+    a {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Employee DEtail</h1>
+  <form th:action="@{/employees/save}" th:object="${employee}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}">
+    <div class="mb-3 mt-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" disabled th:field="*{name}">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="age" class="form-label">AGE</label>
+      <input type="text" class="form-control" id="age"  disabled th:field="*{age}">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="image" class="form-label">SAlary</label>
+      <input type="text" class="form-control" id="image" disabled th:field="*{salary}">
+    </div>
+    <div class="mb-3 mt-3">
+      <table>
+      <tr th:each="p,s : ${employee}">
+        <td th:text="${p.department.name}"></td>
+        </tr>
+        </table>
+    </div>
+    <div class="mb-3 mt-3">
+      <a th:href="@{/employees}" class="btn btn-secondary">Back</a>
+    </div>
+  </form>
+</div>
+</body>
+</html>
