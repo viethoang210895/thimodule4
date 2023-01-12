@@ -1,5 +1,7 @@
 package com.codegym.model;
 
+import com.codegym.model.Employee;
+
 import javax.persistence.*;
 import java.util.List;
 

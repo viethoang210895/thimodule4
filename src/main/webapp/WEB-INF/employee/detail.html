@@ -32,6 +32,10 @@
   <form th:action="@{/employees/save}" th:object="${employee}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}">
     <div class="mb-3 mt-3">
+      <label for="code" class="form-label">Name</label>
+      <input type="text" class="form-control" id="code" disabled th:field="*{code}">
+    </div>
+    <div class="mb-3 mt-3">
       <label for="name" class="form-label">Name</label>
       <input type="text" class="form-control" id="name" disabled th:field="*{name}">
     </div>
@@ -43,7 +47,8 @@
       <label for="image" class="form-label">SAlary</label>
       <input type="text" class="form-control" id="image" disabled th:field="*{salary}">
     </div>
-    <div class="mb-3 mt-3">
+    <h6 style="text-align: center">Department</h6>
+    <div class="mb-3 mt-3" id="qq" >
       <table>
       <tr th:each="p,s : ${employee}">
         <td th:text="${p.department.name}"></td>

@@ -45,6 +45,7 @@
     <table class="table table-striped">
         <tr>
             <th>STT</th>
+            <th>CODE</th>
             <th>Name</th>
             <th>AGE</th>
             <th>SALARY</th>
@@ -53,13 +54,14 @@
         </tr>
         <tr th:each="p,s : ${employees}">
             <td th:text="${s.count}"></td>
+            <td th:text="${p.code}"></td>
             <td > <a th:href="@{/employees/detail/{id}(id=${p.getId()})}" th:text="${p.name}"> </a></td>
             <td th:text="${p.age}"></td>
             <td th:text="${p.salary}"></td>
             <td th:text="${p.department.name}"></td>
             <td><a class="btn btn-warning" th:href="@{/employees/update/{id}(id=${p.getId()})}">Update</a></td>
             <td><a class="btn btn-danger" th:href="@{/employees/delete/{id}(id=${p.getId()})}"
-                   onclick="return confirm('Bạn có chắc chắn muốn xóa Sinh viên này?')">Delete</a></td>
+                   onclick="return confirm('you sure want to delete this employee ?')">Delete</a></td>
         </tr>
     </table>
     <div>

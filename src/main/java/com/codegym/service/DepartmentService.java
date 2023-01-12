@@ -41,7 +41,7 @@ public class DepartmentService implements ICRUDService<Department, Long>, IDepar
     }
 
     @Override
-    public List<Department> findClass() {
+    public List<Department> findDepartment() {
         return (List<Department>) iDepartmentRepository.findAll();
     }
 }

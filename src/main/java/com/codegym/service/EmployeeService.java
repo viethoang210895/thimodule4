@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public  class EmployeeService implements IEmployeeService {
     @Autowired
@@ -37,4 +39,8 @@ public  class EmployeeService implements IEmployeeService {
     public Page<Employee> findByName(String name, Pageable pageable) {
         return iEmployeeRepository.findAllByNameContaining(name,pageable);
     }
+    public List<Employee> findByDepart(){
+        return (List<Employee>) iEmployeeRepository.findAllByDepartment();
+    }
+
 }

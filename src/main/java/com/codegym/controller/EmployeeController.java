@@ -7,11 +7,11 @@ import com.codegym.service.IDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -22,15 +22,12 @@ public class EmployeeController {
     private ICRUDService<Employee, Long> icrudService;
     @Autowired
     private IDepartmentService iDepartmentService;
-    @Value("${upload}")
-    private String upload;
-
     @ModelAttribute("department")
     public List<Department> getClasses() {
-        return iDepartmentService.findClass();
+        return iDepartmentService.findDepartment();
     }
     @GetMapping
-    public ModelAndView listStudents(@PageableDefault(size = 3) Pageable pageable,
+    public ModelAndView listStudents(@PageableDefault(size = 5) Pageable pageable,
                                      @RequestParam("search") Optional<String> name) {
         ModelAndView modelAndView = new ModelAndView("employee/list");
         if (!name.isPresent()) {
@@ -41,6 +38,7 @@ public class EmployeeController {
         }
         return modelAndView;
     }
+
     @GetMapping("/create")
     public ModelAndView createForm() {
         ModelAndView modelAndView = new ModelAndView("employee/form");

@@ -1,4 +1,4 @@
-package com.codegym.controller;
+package com.codegym;
 
 import com.codegym.model.Department;
 import com.codegym.service.ICRUDService;

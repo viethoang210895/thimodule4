@@ -1,15 +1,35 @@
 package com.codegym.model;
 
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
-public class Employee {
+public class Employee  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String code;
+
+    public Employee(Long id, String code, String name, Integer age, Long salary, Department department) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+        this.department = department;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     private String name;
     private Integer age;
     private Long salary;
@@ -67,4 +87,6 @@ public class Employee {
 
     public Employee() {
     }
+
+
 }

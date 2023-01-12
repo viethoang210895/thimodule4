@@ -32,20 +32,28 @@
     <form th:action="@{/employees/save}" th:object="${employee}" method="post" enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}">
         <div class="mb-3 mt-3">
+            <label for="code" class="form-label">Code</label>
+            <input type="text" class="form-control" id="code" placeholder="Enter code" th:field="*{code}" th:required="String">
+
+        </div>
+        <div class="mb-3 mt-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter name" th:field="*{name}">
+            <input type="text" class="form-control" id="name" placeholder="Enter name" th:field="*{name}" th:required="String">
+
         </div>
         <div class="mb-3 mt-3">
             <label for="age" class="form-label">AGE</label>
-            <input type="text" class="form-control" id="age" placeholder="Enter age" th:field="*{age}">
+            <input type="text" class="form-control" id="age" placeholder="Enter age" th:field="*{age}" th:required="Integer">
+
         </div>
         <div class="mb-3 mt-3">
             <label for="image" class="form-label">SAlary</label>
-            <input type="text" class="form-control" id="image" placeholder="Enter salary" th:field="*{salary}">
+            <input type="text" class="form-control" id="image" placeholder="Enter salary" th:field="*{salary}" required>
+
         </div>
         <div class="mb-3 mt-3">
             <label for="class" class="form-label">Department</label>
-            <select class="form-control" id="class" th:field="*{department}">
+            <select class="form-control" id="class" th:field="*{department}" required>
                 <option th:each="c : ${department}" th:value="${c.id}"
                         th:text="${c.name}"></option>
             </select>
